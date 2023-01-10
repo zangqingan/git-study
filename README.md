@@ -73,5 +73,27 @@ git cherry-pick
 git tag
 git rebase
 ## 4.1 常用命令及其含义
+如果是按照上述git工作流介绍的情况还是自己建立远程仓库，为了把远程仓库放到本地第一个用到的命令会是
+git clone xxx.git(远程仓库的地址) 
+这种不带参数时默认停留在 master/main 也就是主分支上。
+git clone xxx.git(远程仓库的地址) -b dev(分支名)
+带 -b 参数时可以指定克隆那个分支。
+
+而如果是现在本地创建仓库，则需要使用命令 git init 初始化所在目录为git 仓库。
+之后就需要使用命令 git remote 和远程仓库进行关联。
+在这之前可以使用 git remote -v 查看当前仓库有没有关联的远程库。
+git remote add origin(远程仓库别名) xxx.git(远程仓库的地址)。
+这个命令的作用就是添加一个远程版本库与本地仓库关联，它可以添加多个远程库。
+添加之后还要使用命令 git push -u origin(远程仓库别名) master/main(本地仓库分支名)，把当前仓库的 master/main 分支和远端仓库的 master/main 分支关联起来。之后推送和拉取操作就方便了。
+不想再关联远程分支时可以使用 git remote rm origin(远程仓库别名) 删除某个远程版本库与本地仓库的关联。
+
+项目克隆到本地之后，我们知道如果是不带 -b参数的克隆默认是在主分支上。但是我们开发又一般是在开发分支develop上。
+这是就需要 git branch 命令 查看有哪些分支。
+git branch 即可查看当前本地仓库所有的分支信息。
+git branch -r/--remotes 即可查看对应远程仓库的所有分支信息。
+git branch -a/--all 即可查看本地和远程仓库的所有分支信息。
+
+在知道有那些分支之后，我们就需要切换或者创建新的分支了。这时候就需要使用 git checkout 命令
+
 
 
